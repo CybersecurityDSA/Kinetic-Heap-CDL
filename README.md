@@ -37,13 +37,13 @@ Contributions to the project are welcome! If you find any issues or have suggest
 
 This project is developed and maintained by Cybersecurity class.
 Contributors:
-Sharan (Project Manager)
-Archana (Business Analyst)
-Vijayan Sankar (Tester)
-Sukhirthan (Tester)
-Kaushal (Tester)
-Senthan (Developer)
-Haresh (Developer)
-Rose (Developer)
-Nirupama (Developer)
-Sivapriya (Developer)
+- Sharan (Project Manager)
+- Archana (Business Analyst)
+- Vijayan Sankar (Tester)
+- Sukhirthan (Tester)
+- Kaushal (Tester)
+- Senthan (Developer)
+- Haresh (Developer)
+- Rose (Developer)
+- Nirupama (Developer)
+- Sivapriya (Developer)
