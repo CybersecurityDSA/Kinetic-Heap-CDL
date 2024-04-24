@@ -22,7 +22,16 @@ public:
     CDL() : head(nullptr), count(0) {}
 
     // Insertion
+    void insertAtKey(int key, int data) {
+        Node* current = head;
+        while (current != nullptr && current->data != key) {
+            current = current->next;
+        }
 
+        if (current == nullptr) {
+            cout << "Node with key " << key << " not found in the list." << endl;
+            return;
+        }
     //Deletion
 
     // Traversal
@@ -61,6 +70,7 @@ int main() {
 
     do {
         cout << "Circular Doubly Linked List Operations:" << endl;
+        cout << "3. Insert with key"
         cout << "8. Traverse Forward" << endl;
         cout << "9. Traverse Backward" << endl;
         cout << "0. Exit" << endl;
@@ -68,6 +78,9 @@ int main() {
         cin >> choice;
 
         switch (choice) {
+            case 3:
+                cin
+                List.insertAtKey(int key, int data)
             case 8:
                 List.traverseForward();
                 break;
