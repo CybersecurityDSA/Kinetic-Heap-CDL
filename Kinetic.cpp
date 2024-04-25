@@ -68,6 +68,22 @@ public:
           }
       }
     }
+    // Heapify down operation
+    void heapifyDown(int idx) {
+        int largest = idx;
+        int left = 2 * idx + 1;
+        int right = 2 * idx + 2;
+        if (left < heap.size() && heap[left]->key > heap[largest]->key)
+            largest = left;
+        if (right < heap.size() && heap[right]->key > heap[largest]->key)
+            largest = right;
+    
+        if (largest != idx) {
+            swap(heap[idx], heap[largest]);
+            heapifyDown(largest);
+        }
+}
+
 
     // Print the kinetic heap
     void printHeap() {
@@ -76,6 +92,8 @@ public:
         std::cout << "Key: " << (*it)->key << ", Data: " << (*it)->data << "\n";
         }
     }
+
+
 
     //to fetch given node(for delete function)
    Node* getele() {
@@ -96,34 +114,32 @@ public:
 int main() {
     KineticHeap kheap;
 
-    // Insert elements....
     kheap.insert(20, 1);
     kheap.insert(35, 2);
     kheap.insert(13, 3);
     kheap.insert(40, 4);
     kheap.insert(25, 5);
 
-    //Find max
     Node* maxNode = kheap.findMax();
     if (maxNode)
         cout << "Max Node: Key = " << maxNode->key << ", Data = " << maxNode->data << "\n";
-    //traverse heap
-    std::cout << "Initial Heap:\n";
+
+    cout << "Initial Heap:\n";
     kheap.printHeap();
- 
-    // Delete a specific element
+
     Node* nodeToDelete = kheap.getele();
-    
-    cout<<nodeToDelete->key<<endl;
+    cout << "Node to delete: " << nodeToDelete->key << endl;
     if (nodeToDelete) {
         kheap.deleteElement(nodeToDelete);
-        std::cout << "After deleting node with key " << nodeToDelete->key << ":\n";
+        cout << "After deleting node with key " << nodeToDelete->key << ":\n";
         kheap.printHeap();
-    }
-    else{
-      cout<<"Node to delete is null";
+    } else {
+        cout << "Node to delete is null";
     }
 
+    kheap.heapifyDown(0);
+    cout << "Heap after heapify down operation:\n";
+    kheap.printHeap();
 
     return 0;
 }
