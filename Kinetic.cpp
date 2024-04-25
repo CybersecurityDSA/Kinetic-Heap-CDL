@@ -31,6 +31,15 @@ private:
     vector<Node*> heap;
 
 public:
+  // Delete the maximum element from the kinetic heap
+    void deleteMax() {
+        if (heap.empty()) return;
+
+        delete heap.front();
+        heap.front() = heap.back();
+        heap.pop_back();
+        heapifyDown(0);
+    }
     // Delete element using key
     void deleteElement(Node* nd) {
       if (nd == nullptr) 
