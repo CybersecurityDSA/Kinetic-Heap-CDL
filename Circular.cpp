@@ -47,6 +47,8 @@ public:
             head->prev = newNode;
         }
     }
+
+    
     //Deletion
 
     // Traversal
@@ -73,6 +75,19 @@ public:
     }
 
     //Search
+   Node* search(int key) {
+        if (head == nullptr)
+            return nullptr;
+
+        Node* current = head;
+        do {
+            if (current->data == key)
+                return current;
+            current = current->next;
+        } while (current != head);
+
+        return nullptr;
+    }
 
     // Utility Operations
     bool isEmpty() {
@@ -113,10 +128,11 @@ int main() {
         cout << "3. Insert with key"
         cout << "8. Traverse Forward" << endl;
         cout << "9. Traverse Backward" << endl;
-        cout << "10. Check Empty " << endl;
-        cout << "11. Size" << endl;
-        cout << "12. Reverse" << endl;
-        cout << "13. Clear" << endl;
+        cout << "10.Search" << endl;
+        cout << "11. Check Empty " << endl;
+        cout << "12. Size" << endl;
+        cout << "13. Reverse" << endl;
+        cout << "14. Clear" << endl;
         cout << "0. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
@@ -130,17 +146,27 @@ int main() {
                 break;
             case 9:
                 List.traverseBackward();
-                break
-             case 10:
+                break;
+            case 10:
+                int key;
+                cout << "Enter the key to search: ";
+                cin >> key;
+                node = List.search(key);
+                if (node != nullptr)
+                    cout << "Key found in the list." << endl;
+                else
+                    cout << "Key not found in the list." << endl;
+                break;
+             case 11:
                 List.isEmpty();
                 break;
-            case 11:
+            case 12:
                 List.size();
                 break;
-            case 12:
+            case 13:
                 List.reverse();
                 break;
-            case 13:
+            case 14:
                 List.clear();
                 break;
             case 0:
