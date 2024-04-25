@@ -47,7 +47,22 @@ public:
             head->prev = newNode;
         }
     }
-
+    void insertBegin(int data) {
+    Node* newNode = new Node(data);
+    if (head == nullptr) {
+        head = newNode;
+        head->next = head;
+        head->prev = head;
+    } else {
+        Node* lastNode = head->prev;
+        newNode->next = head;
+        newNode->prev = lastNode;
+        lastNode->next = newNode;
+        head->prev = newNode;
+        head = newNode; 
+    }
+    count++;
+}
     
     //Deletion
 
@@ -126,6 +141,7 @@ int main() {
     do {
         cout << "Circular Doubly Linked List Operations:" << endl;
         cout << "3. Insert with key"
+        cout << "5. Insert at Beginning" << endl;
         cout << "8. Traverse Forward" << endl;
         cout << "9. Traverse Backward" << endl;
         cout << "10.Search" << endl;
@@ -141,6 +157,12 @@ int main() {
             case 3:
                 cin
                 List.insertAtKey(int key, int data)
+            case 5:
+                int data;
+                cout << "Enter data to insert at the beginning: ";
+                cin >> data;
+                List.insertBegin(data);
+                break;
             case 8:
                 List.traverseForward();
                 break;
