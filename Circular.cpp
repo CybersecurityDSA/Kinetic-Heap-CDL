@@ -32,6 +32,21 @@ public:
             cout << "Node with key " << key << " not found in the list." << endl;
             return;
         }
+
+     void insertEnd(int data) {
+        Node* newNode = new Node(data);
+        if (head == nullptr) {
+            head = newNode;
+            head->next = head;
+            head->prev = head;
+        } else {
+            Node* lastNode = head->prev;
+            newNode->next = head;
+            newNode->prev = lastNode;
+            lastNode->next = newNode;
+            head->prev = newNode;
+        }
+    }
     //Deletion
 
     // Traversal
