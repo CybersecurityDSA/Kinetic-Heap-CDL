@@ -31,6 +31,20 @@ private:
     vector<Node*> heap;
 
 public:
+     // Insert an element into the kinetic heap
+    void insert(int key, int data) {
+        Node* newNode = new Node(key, data);
+        heap.push_back(newNode);
+        heapifyUp(heap.size() - 1);
+    }
+
+    // Find the maximum element of the kinetic heap
+    Node* findMax() {
+        if (heap.empty()){
+            return nullptr;            
+        } 
+        return heap.front();
+    }
     // Delete element using key
     void deleteElement(Node* nd) {
       if (nd == nullptr) 
@@ -74,7 +88,16 @@ int main() {
     KineticHeap kheap;
 
     // Insert elements....
+    kheap.insert(20, 1);
+    kheap.insert(35, 2);
+    kheap.insert(13, 3);
+    kheap.insert(40, 4);
+    kheap.insert(25, 5);
 
+    //Find max
+    Node* maxNode = kheap.findMax();
+    if (maxNode)
+        cout << "Max Node: Key = " << maxNode->key << ", Data = " << maxNode->data << "\n";
     //traverse heap
     std::cout << "Initial Heap:\n";
     kheap.printHeap();
