@@ -93,7 +93,15 @@ public:
         }
     }
 
-
+    // Advance time in the kinetic heap
+`   void advanceTime(int time) {
+        for (Node* node : heap) {
+            node->certificateTime -= time;
+            if (node->certificateTime <= 0) {
+                node->certificate = 0;
+            }
+        }
+    }
 
     //to fetch given node(for delete function)
    Node* getele() {
@@ -137,6 +145,7 @@ int main() {
         cout << "Node to delete is null";
     }
 
+    kheap.advanceTime(10);
     kheap.heapifyDown(0);
     cout << "Heap after heapify down operation:\n";
     kheap.printHeap();
