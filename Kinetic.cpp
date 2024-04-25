@@ -14,6 +14,18 @@ struct Node {
     Node(int k, int d) : key(k), data(d), left(nullptr), right(nullptr), parent(nullptr), certificate(0), certificateTime(INT_MAX) {}
 };
 
+// Certificate event
+struct CertificateEvent {
+    Node* node;
+    int time;
+
+    CertificateEvent(Node* n, int t) : node(n), time(t) {}
+
+    bool operator<(const CertificateEvent& other) const {
+        return time > other.time;
+    }
+};
+
 class KineticHeap {
 private:
     vector<Node*> heap;
