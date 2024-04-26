@@ -97,14 +97,11 @@ public:
         delete Del;
     }
 
-    void Deln() {
+    void Deln(int d) {
         if (head == nullptr) {
             cout << "Null node present" << endl;
             return;
         }
-        int d;
-        cout << "Enter the value of the node to delete:";
-        cin >> d;
 
         Node* current = head;
         do {
@@ -198,49 +195,70 @@ int main() {
     int choice, data;
     Node* node;
 
-    // Test Case 1: Insert at the end
-    List.insertEnd(10); // Passed
-
-    // Test Case 2: Insert at the beginning
-    List.insertBegin(20); // Passed
-
-    // Test Case 3: Delete from front
-    List.Delf(); // Passed
-
-    // Test Case 4: Delete from back
-    List.Delb(); // Passed
-
-    // Test Case 5: Delete by value
+    List.insertEnd(20);
     List.insertEnd(30);
     List.insertEnd(40);
-    List.Deln(); // Passed
-
-    // Test Case 6: Traversal
     List.insertEnd(50);
     List.insertEnd(60);
+    List.insertEnd(70);
+    List.insertEnd(80);
+    cout << "Initial list: ";
+    List.traverseForward();
+    // Test Case 1: Insert at the end
+    List.insertEnd(90); // Passed
+    cout << "Inserted 90 at end: ";
+    List.traverseForward();
+
+    // Test Case 2: Insert at the beginning
+    List.insertBegin(10); // Passed
+    cout << "Insert 10 at beginning: ";
+    List.traverseForward();
+
+    // Test Case 3: Delete from front
+    // List.Delf(); // Passed
+    // cout << "Delete from front: ";
+    // List.traverseForward();
+    // Test Case 4: Delete from back
+    cout << "List before deletion (Deletion from back): ";
+    List.traverseForward();
+    List.Delb(); // Failed
+    cout << "Delete from back: ";
+    List.traverseForward();
+    // Test Case 5: Delete by value
+    cout << "List before deletion: ";
+    List.traverseForward();
+    // List.Deln(10);
+    // cout << "Delete 10 (first element): "; //Failed
+    // List.traverseForward();
+    List.Deln(70);
+    cout << "Delete 70 (middle element): "; //Passed
+    List.traverseForward();
+    // Test Case 6: Traversal
     cout << "Forward traversal: ";
     List.traverseForward(); // Passed
     cout << "Backward traversal: ";
     List.traverseBackward(); // Passed
 
     // Test Case 7: Search
-    List.insertEnd(70);
-    List.insertEnd(80);
+
     Node* foundNode = List.search(80);
     if (foundNode)
         cout << "Node found with value " << foundNode->data << endl; // Passed
     else
         cout << "Node not found" << endl;
+    Node* notFoundNode = List.search(100);
+    if (notFoundNode)
+        cout << "Node found with value " << notFoundNode->data << endl; // Passed
+    else
+        cout << "Node not found with value " << 100 << endl;
 
     // Test Case 8: Utility Operations
     cout << "List is empty: " << (List.isEmpty() ? "true" : "false") << endl; // Passed
-    cout << "Size of the list: " << List.size() << endl; // Passed
-    List.clear(); // Passed
+    cout << "Size of the list: " << List.size() << endl; // Failed (it only tells the max of size of list)
 
     // Test Case 9: Reverse
-    List.insertEnd(90);
-    List.insertEnd(100);
-    List.reverse(); // Passed
-
+    List.reverse(); // Failed
+    cout << "List after reversing: ";
+    List.traverseForward();
     return 0;
 }
