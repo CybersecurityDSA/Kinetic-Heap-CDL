@@ -31,6 +31,7 @@ public:
             cout << "Node with key " << key << " not found in the list." << endl;
             return;
         }
+        count++;
     }
 
     void insertEnd(int data) {
@@ -68,19 +69,22 @@ public:
 
     //Deletion
     void Delf() {
-        if (head == nullptr) {
-            cout << "Null node present" << endl;
-            return;
-        }
-        Node* Del = head->next;
-        if (head->next == head)
-            head = nullptr;
-        else {
-            head->prev = Del->prev;
-            Del->prev->next = head;
-        }
-        delete Del;
+    if (head == nullptr) {
+        cout << "Null node present" << endl;
+        return;
     }
+    Node* Del = head;
+    if (head->next == head) {
+        head = nullptr;
+    } else {
+        head->prev->next = head->next;
+        head->next->prev = head->prev;
+        head = head->next;
+    }
+    delete Del;
+    count--;
+}
+
 
     void Delb() {
         if (head == nullptr) {
@@ -95,6 +99,7 @@ public:
             Del->prev->next = head;
         }
         delete Del;
+        count--;
     }
 
     void Deln(int d) {
@@ -118,8 +123,10 @@ public:
                     delete current;
                     return;
                 }
+                count--;
             }
             current = current->next;
+            
         } while (current != head);
     }
 
@@ -166,8 +173,22 @@ public:
         return head == nullptr;
     }
 
-    int size() {
+    int sizev1() {
         return count;
+    }
+    int size(){
+    if (head == nullptr)
+        return 0;
+
+    int size = 0;
+    Node* current = head;
+    do {
+        size++;
+        current = current->next;
+    } while (current != head);
+
+    return size;
+
     }
 
     void clear() {
@@ -194,7 +215,6 @@ int main() {
     CDL List;
     int choice, data;
     Node* node;
-
     List.insertEnd(20);
     List.insertEnd(30);
     List.insertEnd(40);
@@ -215,23 +235,23 @@ int main() {
     List.traverseForward();
 
     // Test Case 3: Delete from front
-    // List.Delf(); // Passed
-    // cout << "Delete from front: ";
-    // List.traverseForward();
+    List.Delf(); // Passed
+    cout << "Delete from front: ";
+    List.traverseForward();
     // Test Case 4: Delete from back
     cout << "List before deletion (Deletion from back): ";
     List.traverseForward();
-    List.Delb(); // Failed
+    List.Delb(); // Passed
     cout << "Delete from back: ";
     List.traverseForward();
     // Test Case 5: Delete by value
     cout << "List before deletion: ";
     List.traverseForward();
-    // List.Deln(10);
-    // cout << "Delete 10 (first element): "; //Failed
-    // List.traverseForward();
     List.Deln(70);
     cout << "Delete 70 (middle element): "; //Passed
+    List.traverseForward();
+    List.Deln(20);
+    cout << "Delete 20 (first element): "; //Passed
     List.traverseForward();
     // Test Case 6: Traversal
     cout << "Forward traversal: ";
