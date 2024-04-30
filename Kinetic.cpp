@@ -1,5 +1,9 @@
+%%writefile kinetic.cpp
 #include <iostream>
 #include <vector>
+#include<climits>
+#include <functional>
+
 using namespace std;
 
 struct Node {
@@ -54,20 +58,18 @@ public:
         heap.pop_back();
         heapifyDown(0);
     }
-    // Delete element using key
-    void deleteElement(Node* nd) {
-      if (nd == nullptr) 
-          return;
+   void deleteElement(Node* nodeToDelete) {
+        if (!nodeToDelete) return;
 
-      auto it = find(heap.begin(), heap.end(), nd);
-      if (it != heap.end()) {
-          swap(*it, heap.back());
-          heap.pop_back();
-          if (it != heap.end()) {
-            heapifyDown(it - heap.begin()); \\to be defined
-          }
-      }
+        auto it = std::find(heap.begin(), heap.end(), nodeToDelete);
+        if (it != heap.end()) {
+            delete *it;
+            *it = heap.back();
+            heap.pop_back();
+            heapifyDown(std::distance(heap.begin(), it));
+        }
     }
+
     // Heapify down operation
     void heapifyDown(int idx) {
         int largest = idx;
@@ -94,7 +96,7 @@ public:
     }
 
     // Advance time in the kinetic heap
-`   void advanceTime(int time) {
+    void advanceTime(int time) {
         for (Node* node : heap) {
             node->certificateTime -= time;
             if (node->certificateTime <= 0) {
