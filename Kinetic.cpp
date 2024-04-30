@@ -69,7 +69,14 @@ public:
             heapifyDown(std::distance(heap.begin(), it));
         }
     }
-
+    // Heapify up operation
+    void heapifyUp(int idx) {
+        int parent = (idx-1)/2;
+        if (parent >=0 && heap[parent]->key > heap[idk]->key) {
+            swap(heap[parent],heap[idk]);
+            heapifyUp(parent);
+        }
+    }
     // Heapify down operation
     void heapifyDown(int idx) {
         int largest = idx;
