@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include<climits>
 using namespace std;
 
 struct Node {
@@ -31,14 +32,12 @@ private:
     vector<Node*> heap;
 
 public:
-    // Insert an element into the kinetic heap
     void insert(int key, int data) {
         Node* newNode = new Node(key, data);
         heap.push_back(newNode);
         heapifyUp(heap.size() - 1);
     }
 
-    // Find the maximum element of the kinetic heap
     Node* findMax() {
         if (heap.empty()){
             return nullptr;            
@@ -46,7 +45,6 @@ public:
         return heap.front();
     }
 
-    // Delete the maximum element from the kinetic heap
     void deleteMax() {
         if (heap.empty()) return;
 
@@ -56,22 +54,26 @@ public:
         heapifyDown(0);
     }
 
-    // Delete element using key
-    void deleteElement(Node* nd) {
-        if (nd == nullptr) 
-            return;
+    void deleteElement(Node* nodeToDelete) {
+        if (!nodeToDelete) return;
 
-        auto it = find(heap.begin(), heap.end(), nd);
+        auto it = std::find(heap.begin(), heap.end(), nodeToDelete);
         if (it != heap.end()) {
-            swap(*it, heap.back());
+            delete *it;
+            *it = heap.back();
             heap.pop_back();
-            if (it != heap.end()) {
-                heapifyDown(it - heap.begin());
-            }
+            heapifyDown(std::distance(heap.begin(), it));
         }
     }
 
-    // Heapify down operation
+    void heapifyUp(int idx) {
+        int parent = (idx-1)/2;
+        if (parent >=0 && heap[parent]->key > heap[idx]->key) {
+            swap(heap[parent],heap[idx]);
+            heapifyUp(parent);
+        }
+    }
+
     void heapifyDown(int idx) {
         int largest = idx;
         int left = 2 * idx + 1;
@@ -87,7 +89,6 @@ public:
         }
     }
 
-    // Print the kinetic heap
     void printHeap() {
         vector<Node*>::iterator it;
         for (auto it = heap.begin(); it != heap.end(); ++it) {
@@ -95,7 +96,6 @@ public:
         }
     }
 
-    // Advance time in the kinetic heap
     void advanceTime(int time) {
         for (Node* node : heap) {
             node->certificateTime -= time;
@@ -105,13 +105,18 @@ public:
         }
     }
 
-    // Get the last element of the heap
     Node* getele() {
         if (heap.empty()) return nullptr;
         return heap.back();
     }
+    void printCertificateTime(Node* node) {
+        if (node) {
+            cout << "Certificate Time for Node with Key " << node->key << ": " << node->certificateTime << endl;
+        } else {
+            cout << "Node is null" << endl;
+        }
+    }
 
-    // Destructor to free memory
     ~KineticHeap() {
         for (Node* node : heap) {
             delete node;
@@ -128,6 +133,7 @@ int main() {
     kheap.insert(13, 3);
     kheap.insert(40, 4);
     kheap.insert(25, 5);
+    
 
     // Test Case 2: Find the maximum element of the kinetic heap
     Node* maxNode = kheap.findMax();
@@ -138,22 +144,83 @@ int main() {
     cout << "Initial Heap:\n";
     kheap.printHeap();
 
-    // Test Case 4: Delete a node from the heap
+    // Test Case 4: Delete all node from the heap
     Node* nodeToDelete = kheap.getele();
     cout << "Node to delete: " << nodeToDelete->key << endl;
     if (nodeToDelete) {
+        int key =nodeToDelete->key;
         kheap.deleteElement(nodeToDelete);
-        cout << "After deleting node with key " << nodeToDelete->key << ":\n";
+        cout << "After deleting node with key " << key << ":\n";
+        kheap.printHeap();
+    } else {
+        cout << "Node to delete is null";
+    }
+ nodeToDelete = kheap.getele();
+    cout << "Node to delete: " << nodeToDelete->key << endl;
+    if (nodeToDelete) {
+        int key =nodeToDelete->key;
+        kheap.deleteElement(nodeToDelete);
+        cout << "After deleting node with key " << key << ":\n";
+        kheap.printHeap();
+    } else {
+        cout << "Node to delete is null";
+    }
+     nodeToDelete = kheap.getele();
+    cout << "Node to delete: " << nodeToDelete->key << endl;
+    if (nodeToDelete) {
+        int key =nodeToDelete->key;
+        kheap.deleteElement(nodeToDelete);
+        cout << "After deleting node with key " << key << ":\n";
+        kheap.printHeap();
+    } else {
+        cout << "Node to delete is null";
+    }
+     nodeToDelete = kheap.getele();
+    cout << "Node to delete: " << nodeToDelete->key << endl;
+    if (nodeToDelete) {
+        int key =nodeToDelete->key;
+        kheap.deleteElement(nodeToDelete);
+        cout << "After deleting node with key " << key << ":\n";
+        kheap.printHeap();
+    } else {
+        cout << "Node to delete is null";
+    }
+     nodeToDelete = kheap.getele();
+    cout << "Node to delete: " << nodeToDelete->key << endl;
+    if (nodeToDelete) {
+        int key =nodeToDelete->key;
+        kheap.deleteElement(nodeToDelete);
+        cout << "After deleting node with key " << key << ":\n";
+        kheap.printHeap();
+    } else {
+        cout << "Node to delete is null";
+    }
+     nodeToDelete = kheap.getele();
+    cout << "Node to delete: " << nodeToDelete->key << endl;
+    if (nodeToDelete) {
+        int key =nodeToDelete->key;
+        kheap.deleteElement(nodeToDelete);
+        cout << "After deleting node with key " << key << ":\n";
         kheap.printHeap();
     } else {
         cout << "Node to delete is null";
     }
 
+
     // Test Case 5: Advance time in the kinetic heap
-    kheap.advanceTime(10);
+    // Print initial certificate time
+    Node* node = kheap.findMax();
+    kheap.printCertificateTime(node);
+
+    // Advance time by 5 units
+    kheap.advanceTime(5);
+
+    // Print updated certificate time
+    kheap.printCertificateTime(node);
+
 
     // Test Case 6: Heapify down operation
-    kheap.heapifyDown(0);
+    kheap.heapifyDown(2);
     cout << "Heap after heapify down operation:\n";
     kheap.printHeap();
 
