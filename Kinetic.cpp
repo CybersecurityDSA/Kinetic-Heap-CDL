@@ -96,6 +96,9 @@ public:
 
     // Print the kinetic heap
     void printHeap() {
+        if (heap.empty()){
+          cout<<"Heap is empty"<<endl;
+        }
         vector<Node*>::iterator it;
         for (auto it = heap.begin(); it != heap.end(); ++it) {
         std::cout << "Key: " << (*it)->key << ", Data: " << (*it)->data << "\n";
