@@ -72,6 +72,19 @@ if (head) {
     head.prev = current;
     current.next = head;
 }
+
+// Function to insert a new photo
+function insertPhoto() {
+    var imageUrl = prompt("Enter the URL of the photo:");
+    if (imageUrl) {
+        var newNode = new Node(imageUrl);
+        newNode.next = current.next;
+        current.next.prev = newNode;
+        current.next = newNode;
+        newNode.prev = current;
+        displayCurrentPhoto(); // Update the displayed photo
+    }
+}
 </script>
 
 </body>
