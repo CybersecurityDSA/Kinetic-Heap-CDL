@@ -43,6 +43,35 @@
 </div>
 
 <script>
+// Define image URLs
+var imageUrls = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg"];
+
+// Circular doubly linked list node
+function Node(data) {
+    this.data = data;
+    this.prev = null;
+    this.next = null;
+}
+
+// Create circular doubly linked list from image URLs
+var head = null;
+var current = null;
+for (var i = 0; i < imageUrls.length; i++) {
+    var newNode = new Node(imageUrls[i]);
+    if (!head) {
+        head = newNode;
+        current = newNode;
+    } else {
+        current.next = newNode;
+        newNode.prev = current;
+        current = newNode;
+    }
+}
+// Make the list circular
+if (head) {
+    head.prev = current;
+    current.next = head;
+}
 </script>
 
 </body>
