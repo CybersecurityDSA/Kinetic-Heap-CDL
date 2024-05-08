@@ -46,8 +46,8 @@
 <body>
 <div id="photo-container">
     <img id="current-photo" src="photo1.jpg" alt="Photo">
-    <button id="prev-button" class="nav-button">Previous</button>
-    <button id="next-button" class="nav-button">Next</button>
+    <button id="prev-button" class="nav-button" onclick="showNextPhoto()>Previous</button>
+    <button id="next-button" class="nav-button" onclick="showPreviousPhoto()>Next</button>
     <button id="delete-button" class="nav-button" onclick="deletePhoto()">Delete</button>
     <button id="insert-button" class="nav-button" onclick="insertPhoto()">Insert</button>
 </div>
@@ -118,22 +118,30 @@ function insertPhoto() {
 
 
 function deletePhoto() {
-    if (!current.next || current.next === head) {
+    if (current.next == current) {
+        current = null;
+        head = null;
+        document.getElementById("current-photo").style.display = "none";
         alert("No photo to delete.");
         return;
     }
 
-    var deletedNode = current.next;
-    current.next = deletedNode.next;
-    deletedNode.next.prev = current;
+    var deletedNode = current;
+    current.prev.next = deletedNode.next;
+    deletedNode.next.prev = current.prev;
+
+    if (current == head) {
+        head = head.next;
+    }
+    current = current.next;
+
     deletedNode.next = null;
     deletedNode.prev = null;
-
-    // Optionally, you can free up the memory occupied by the deleted node if needed
-    // deletedNode = null;
+    deletedNode = null;
 
     displayCurrentPhoto();
 }
+
 </script>
 
 </body>
