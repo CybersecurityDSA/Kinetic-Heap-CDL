@@ -32,6 +32,14 @@
     #next-button {
         right: 10px;
     }
+    #delete-button{
+        top: 5px;
+	right: 150px
+    }
+    #insert-button{
+        top: 5px;
+	right: 60px
+    }
 </style>
 </head>
 
@@ -40,6 +48,8 @@
     <img id="current-photo" src="photo1.jpg" alt="Photo">
     <button id="prev-button" class="nav-button">Previous</button>
     <button id="next-button" class="nav-button">Next</button>
+    <button id="delete-button" class="nav-button" onclick="deletePhoto()">Delete</button>
+    <button id="insert-button" class="nav-button" onclick="insertPhoto()">Insert</button>
 </div>
 
 <script>
