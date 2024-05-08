@@ -85,6 +85,24 @@ function insertPhoto() {
         displayCurrentPhoto(); // Update the displayed photo
     }
 }
+
+function deletePhoto() {
+    if (!current.next || current.next === head) {
+        alert("No photo to delete.");
+        return;
+    }
+
+    var deletedNode = current.next;
+    current.next = deletedNode.next;
+    deletedNode.next.prev = current;
+    deletedNode.next = null;
+    deletedNode.prev = null;
+
+    // Optionally, you can free up the memory occupied by the deleted node if needed
+    // deletedNode = null;
+
+    displayCurrentPhoto();
+}
 </script>
 
 </body>
