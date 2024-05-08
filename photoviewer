@@ -73,6 +73,26 @@ if (head) {
     current.next = head;
 }
 
+// Function to display the current photo
+    function displayCurrentPhoto() {
+        document.getElementById("current-photo").src = current.data;
+    }
+
+    // Function to show the previous photo
+    function showPreviousPhoto() {
+        current = current.prev;
+        displayCurrentPhoto();
+    }
+
+    // Function to show the next photo
+    function showNextPhoto() {
+        current = current.next;
+        displayCurrentPhoto();
+    }
+
+    // Display the initial photo
+    displayCurrentPhoto();
+
 // Function to insert a new photo
 function insertPhoto() {
     var imageUrl = prompt("Enter the URL of the photo:");
