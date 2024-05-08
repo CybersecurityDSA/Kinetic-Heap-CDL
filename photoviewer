@@ -116,6 +116,7 @@ function insertPhoto() {
     }
 }
 
+
 function deletePhoto() {
     if (!current.next || current.next === head) {
         alert("No photo to delete.");
