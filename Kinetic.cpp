@@ -79,18 +79,24 @@ public:
     }
     // Heapify down operation
     void heapifyDown(int idx) {
-        int largest = idx;
-        int left = 2 * idx + 1;
-        int right = 2 * idx + 2;
-        if (left < heap.size() && heap[left]->key > heap[largest]->key)
-            largest = left;
-        if (right < heap.size() && heap[right]->key > heap[largest]->key)
-            largest = right;
+      int largest = idx;
+      int left = 2 * idx + 1;
+      int right = 2 * idx + 2;
     
-        if (largest != idx) {
-            swap(heap[idx], heap[largest]);
-            heapifyDown(largest);
-        }
+      if (left < heap.size() && heap[left]->key > heap[largest]->key)
+        largest = left;
+      else if (left < heap.size() && heap[left]->key == heap[largest]->key && heap[left]->certificate > heap[largest]->certificate)
+        largest = left;
+    
+      if (right < heap.size() && heap[right]->key > heap[largest]->key)
+        largest = right;
+      else if (right < heap.size() && heap[right]->key == heap[largest]->key && heap[right]->certificate > heap[largest]->certificate)
+        largest = right;
+    
+      if (largest != idx) {
+        swap(heap[idx], heap[largest]);
+        heapifyDown(largest);
+      }
 }
 
 
