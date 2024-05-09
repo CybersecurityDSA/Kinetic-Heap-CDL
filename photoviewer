@@ -46,8 +46,8 @@
 <body>
 <div id="photo-container">
     <img id="current-photo" src="photo1.jpg" alt="Photo">
-    <button id="prev-button" class="nav-button" onclick="showNextPhoto()>Previous</button>
-    <button id="next-button" class="nav-button" onclick="showPreviousPhoto()>Next</button>
+    <button id="prev-button" class="nav-button" onclick="showNextPhoto()">Previous</button>
+    <button id="next-button" class="nav-button" onclick="showPreviousPhoto()">Next</button>
     <button id="delete-button" class="nav-button" onclick="deletePhoto()">Delete</button>
     <button id="insert-button" class="nav-button" onclick="insertPhoto()">Insert</button>
 </div>
@@ -71,6 +71,8 @@ for (var i = 0; i < imageUrls.length; i++) {
     if (!head) {
         head = newNode;
         current = newNode;
+	head.next=head;
+	head.prev=head;
     } else {
         current.next = newNode;
         newNode.prev = current;
@@ -85,7 +87,12 @@ if (head) {
 
 // Function to display the current photo
     function displayCurrentPhoto() {
-        document.getElementById("current-photo").src = current.data;
+	if(head!=null){
+        	document.getElementById("current-photo").src = current.data;
+		document.getElementById("current-photo").style.display = "block";
+	}
+	else
+		document.getElementById("current-photo").style.display = "none";
     }
 
     // Function to show the previous photo
@@ -105,34 +112,33 @@ if (head) {
 
 // Function to insert a new photo
 function insertPhoto() {
-  var imageUrl = prompt("Enter the URL of the photo:");
-  if (imageUrl) {
-    var newNode = new Node(imageUrl);
-    if (current == null) { 
-      head = newNode;
-      current = newNode;
-      head.next = head;
-      head.prev = head;
-    } else {
-      newNode.next = current.next;
-      current.next.prev = newNode;
-      current.next = newNode;
-      newNode.prev = current;
-
-      if (current == head) {
-        head = newNode;
-      }
+    var imageUrl = prompt("Enter the URL of the photo:");
+    if (imageUrl) {
+        var newNode = new Node(imageUrl);
+        if (current === null) {
+            head = newNode;
+            current = newNode;
+            head.next = head;
+            head.prev = head;
+        } else {
+            newNode.next = current.next;
+            current.next.prev = newNode;
+            current.next = newNode;
+            newNode.prev = current;
+        }
+	current=newNode;
+        displayCurrentPhoto(); 
     }
-    displayCurrentPhoto(); 
-  }
 }
 
+
 function deletePhoto() {
+    if (current===null)
+	 alert("No photo to delete.");
     if (current.next == current) {
         current = null;
         head = null;
-        document.getElementById("current-photo").style.display = "none";
-        alert("No photo to delete.");
+	displayCurrentPhoto();
         return;
     }
 
