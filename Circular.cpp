@@ -31,13 +31,17 @@ void insertAtKey(int key, int data) {
         return;
     }
 
+    // Create a new node with the given data
     Node* newNode = new Node(data);
 
+    // Adjust pointers to insert the new node after the current node
     newNode->prev = current;
     newNode->next = current->next;
     current->next->prev = newNode;
     current->next = newNode;
 
+    // Increment the count of nodes
+    count++;
 }
 
      void insertEnd(int data) {
