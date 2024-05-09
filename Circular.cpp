@@ -20,17 +20,26 @@ public:
     CDL() : head(nullptr), count(0) {}
 
     // Insertion
-    void insertAtKey(int key, int data) {
-        Node* current = head;
-        while (current != nullptr && current->data != key) {
-            current = current->next;
-        }
+void insertAtKey(int key, int data) {
+    if (tail == nullptr) {
+        cout << "List is empty." << endl;
+        return;
+    }
 
-        if (current == nullptr) {
-            cout << "Node with key " << key << " not found in the list." << endl;
+    Node* current = tail->next; 
+    do {
+        if (current->data == key) {
+            Node* newNode = new Node(data);
+            newNode->next = current->next;
+            current->next = newNode;
             return;
         }
-    }
+        current = current->next;
+    } while (current != tail->next); 
+
+    cout << "Node with key " << key << " not found in the list." << endl;
+}
+}
 
      void insertEnd(int data) {
         Node* newNode = new Node(data);
