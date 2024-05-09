@@ -113,28 +113,28 @@ void insertAtKey(int key, int data) {
     		return;
 		}
 		int d;
-        cout << "Enter the value of the node to detele:";
-        cin >> d;
+        	cout << "Enter the value of the node to detele:";
+        	cin >> d;
         
 		Node* current = head;
-        do {
-            if (current->data == d) {
-                if (current == head) {
-                    Delf();
-                    return;
-                } 
-				else if (current->next == head) {
-                    Delb();
-                    return;
-                } else {
-                    current->prev->next = current->next;
-                    current->next->prev = current->prev;
-                    delete current;
-                    return;
-                }
-            }
-            current = current->next;
-        } while (current != head);
+	        do {
+	            if (current->data == d) {
+	                if (current == head) {
+	                    Delf();
+	                    return;
+	                } 
+					else if (current->next == head) {
+	                    Delb();
+	                    return;
+	                } else {
+	                    current->prev->next = current->next;
+	                    current->next->prev = current->prev;
+	                    delete current;
+	                    return;
+	                }
+	            }
+	            current = current->next;
+	        } while (current != head);
 	}
       
     // Traversal
