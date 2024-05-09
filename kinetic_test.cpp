@@ -42,6 +42,22 @@ public:
         heapifyUp(heap.size() - 1);
     }
 
+    // Update using key into the kinetic heap
+
+    void updateKey(Node* nodeToUpdate, int newKey) {
+        if (!nodeToUpdate) 
+            return;
+
+        nodeToUpdate->key = newKey;
+        int index = distance(heap.begin(), find(heap.begin(), heap.end(), nodeToUpdate));
+        int parent = (index - 1) / 2;
+        
+        if (parent >= 0 && heap[parent]->key > heap[index]->key)
+            heapifyUp(index);
+        else
+            heapifyDown(index);
+    }
+
     // Find the maximum element of the kinetic heap
     Node* findMax() {
         if (heap.empty()){
