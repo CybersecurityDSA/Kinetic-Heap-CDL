@@ -21,23 +21,23 @@ public:
 
     // Insertion
 void insertAtKey(int key, int data) {
-    if (tail == nullptr) {
-        cout << "List is empty." << endl;
+    Node* current = head;
+    while (current != nullptr && current->data != key) {
+        current = current->next;
+    }
+
+    if (current == nullptr) {
+        cout << "Node with key " << key << " not found in the list." << endl;
         return;
     }
 
-    Node* current = tail->next; 
-    do {
-        if (current->data == key) {
-            Node* newNode = new Node(data);
-            newNode->next = current->next;
-            current->next = newNode;
-            return;
-        }
-        current = current->next;
-    } while (current != tail->next); 
+    Node* newNode = new Node(data);
 
-    cout << "Node with key " << key << " not found in the list." << endl;
+    newNode->prev = current;
+    newNode->next = current->next;
+    current->next->prev = newNode;
+    current->next = newNode;
+
 }
 
      void insertEnd(int data) {
