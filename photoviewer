@@ -28,28 +28,50 @@
     }
     #prev-button {
         left: 10px;
+        background-color: rgb(47, 46, 46);
+        color: #f0f4f9;
+        border: none;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        opacity: 90%;
     }
     #next-button {
         right: 10px;
+        background-color: rgb(47, 46, 46);
+        color: #f0f4f9;
+        border: none;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        opacity: 90%;
     }
     #delete-button{
         top: 5px;
-	right: 150px
+	    right: 30px;
+        background-color: rgb(47, 46, 46);
+        color: #f0f4f9;
+        border: none;
+        opacity: 90%;
     }
     #insert-button{
         top: 5px;
-	right: 60px
+	    right: 80px;
+        background-color: rgb(47, 46, 46);
+        color: #f0f4f9;
+        border: none;
+        opacity: 90%;
+        
     }
 </style>
+<script src="https://kit.fontawesome.com/0b3c470b64.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 <div id="photo-container">
     <img id="current-photo" src="photo1.jpg" alt="Photo">
-    <button id="prev-button" class="nav-button" onclick="showNextPhoto()">Previous</button>
-    <button id="next-button" class="nav-button" onclick="showPreviousPhoto()">Next</button>
-    <button id="delete-button" class="nav-button" onclick="deletePhoto()">Delete</button>
-    <button id="insert-button" class="nav-button" onclick="insertPhoto()">Insert</button>
+    <button id="prev-button" class="nav-button" onclick="showNextPhoto()"><i class="fa-solid fa-chevron-left"></i></button>
+    <button id="next-button" class="nav-button" onclick="showPreviousPhoto()"><i class="fa-solid fa-chevron-right"></i></button>
+    <button id="delete-button" class="nav-button" onclick="deletePhoto()"><i class="fa-solid fa-trash"></i></button>
+    <button id="insert-button" class="nav-button" onclick="insertPhoto()"><i class="fa-solid fa-file-import"></i></button>
 </div>
 
 <script>
