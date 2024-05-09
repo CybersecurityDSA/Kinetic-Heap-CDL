@@ -72,7 +72,7 @@ public:
     // Heapify up operation
     void heapifyUp(int idx) {
         int parent = (idx-1)/2;
-        if (parent >=0 && heap[parent]->key > heap[idx]->key) {
+        if (parent >=0 && heap[parent]->key < heap[idx]->key) {
             swap(heap[parent],heap[idx]);
             heapifyUp(parent);
         }
