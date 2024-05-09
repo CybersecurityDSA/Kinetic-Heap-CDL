@@ -236,6 +236,7 @@ int main() {
                 cout << "Enter the key to insert: ";
                 cin >> key;
                 List.insertAtKey(key, data);
+		break;
             case 1:
                 cout << "Enter data to insert at the beginning: ";
                 cin >> data;
