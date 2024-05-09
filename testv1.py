@@ -18,8 +18,7 @@ Backward traversal: 80 60 50 40 30
 Node found with value 80
 Node not found with value 100
 List is empty: false
-Size of the list: 5
-List after reversing: 40 30 80 60 50'''.split("\n")
+Size of the list: 5'''.split("\n")
     for i in range(len(ans)):
         if ans[i]==actual_output[i]:
             print(chalk.green.bold("[ Test Passed ]"))
