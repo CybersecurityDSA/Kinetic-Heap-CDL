@@ -39,7 +39,6 @@ void insertAtKey(int key, int data) {
 
     cout << "Node with key " << key << " not found in the list." << endl;
 }
-}
 
      void insertEnd(int data) {
         Node* newNode = new Node(data);
