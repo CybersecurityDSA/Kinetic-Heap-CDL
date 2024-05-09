@@ -1,4 +1,4 @@
-
+%%writefile circular.cpp
 
 #include <iostream>
 using namespace std;
@@ -32,6 +32,7 @@ public:
             cout << "Node with key " << key << " not found in the list." << endl;
             return;
         }
+    }
 
      void insertEnd(int data) {
         Node* newNode = new Node(data);
@@ -175,7 +176,7 @@ public:
 
     void clear() {
         while (!isEmpty()){
-            deleteFront();
+            Delf();
         } 
     }
 
@@ -199,15 +200,15 @@ int main() {
     Node* node;
 
     do {
-        cout << "Circular Doubly Linked List Operations:" << endl
+        cout << "Circular Doubly Linked List Operations:" << endl;
         cout << "1. Insert at Beginning" << endl;
-        cout << "2. Insert with key"<<endl
+        cout << "2. Insert with key"<<endl;
         cout << "3. Traverse Forward" << endl;
         cout << "4. Traverse Backward" << endl;
         cout << "5. Search" << endl;
-        court<<"6. Delete front"<<endl
-        cout<< "7. Delete back"<<endl
-        cout<< "8. Delete Node"<<endl  
+        cout<<"6. Delete front"<<endl;
+        cout<< "7. Delete back"<<endl;
+        cout<< "8. Delete Node"<<endl;  
         cout << "9. Check Empty " << endl;
         cout << "10. Size" << endl;
         cout << "11. Reverse" << endl;
@@ -218,10 +219,14 @@ int main() {
 
         switch (choice) {
             case 2:
-                cin
-                List.insertAtKey(int key, int data)
-            case 1:
                 int data;
+                cout << "Enter data to insert at the position: ";
+                cin >> data;
+                int key;
+                cout << "Enter the key to insert: ";
+                cin >> key;
+                List.insertAtKey(key, data);
+            case 1:
                 cout << "Enter data to insert at the beginning: ";
                 cin >> data;
                 List.insertBegin(data);
@@ -233,7 +238,6 @@ int main() {
                 List.traverseBackward();
                 break;
             case 5:
-                int key;
                 cout << "Enter the key to search: ";
                 cin >> key;
                 node = List.search(key);
@@ -244,13 +248,13 @@ int main() {
                 break;
             case 6:
               List.Delf();
-              break
+              break;
             case 7:
               List.Delb();
-              break
+              break;
             case 8:
               List.Deln();
-              break
+              break;
             case 9:
                 List.isEmpty();
                 break;
