@@ -11,7 +11,6 @@ class Node {
 
     Node(int val) : data(val), prev(nullptr), next(nullptr) {}
 };
-
 class CDL {
 private:
     Node* head;
