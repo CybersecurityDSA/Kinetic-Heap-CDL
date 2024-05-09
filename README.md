@@ -19,7 +19,7 @@ To use Kinetic Heaps in your project, follow these steps:
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/FrenzyVJN/DSA-Project.git
+    git clone https://github.com/CybersecurityDSA/KineticHeap.git
     ```
 
 2. Include the necessary files in your project.
