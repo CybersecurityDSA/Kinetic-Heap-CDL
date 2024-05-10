@@ -4,7 +4,21 @@ Welcome to the Kinetic Heaps & Circular Linked List project repository! This pro
 
 ## Introduction
 
-Kinetic Heaps are dynamic data structures that support operations such as insertion, deletion, and querying of elements with changing priorities. They are particularly useful in applications where the priorities of elements are not static but evolve over time.
+Circular Linked List:
+
+A circular linked list is a variation of the traditional linked list data structure. In a circular linked list, the last node of the list points back to the first node, forming a loop. This differs from a standard linked list, where the last node typically points to null.
+
+Because of this circular structure, operations like traversal, insertion, and deletion can be efficiently performed. Additionally, it's often easier to handle edge cases, such as wrapping around the end of the list.
+
+Circular linked lists find applications in various scenarios, such as managing resources that naturally form a loop (like a round-robin scheduling algorithm) or implementing certain data structures like circular buffers.
+
+Kinetic Heap:
+
+A kinetic heap is a data structure used in computational geometry and other related fields. It's particularly useful in problems involving dynamic sets of points that move continuously in some predefined manner, like points undergoing linear motion or rotation.
+
+The kinetic heap maintains a set of moving elements and efficiently supports operations such as insertion and deletion while handling continuous changes in the positions of these elements. This makes it suitable for problems involving motion planning, collision detection, and other applications where objects are in motion and their spatial relationships need to be continuously updated.
+
+The kinetic heap is a crucial component in algorithms dealing with dynamic geometric data, offering efficient solutions to problems that involve objects in motion. It's an extension of traditional heap data structures, adapted to handle the dynamics of moving elements effectively.
 
 ## Features
 
