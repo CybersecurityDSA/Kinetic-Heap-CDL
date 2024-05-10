@@ -42,7 +42,7 @@ public:
         heapifyUp(heap.size() - 1);
     }
 
-    // Update the key into 
+    // Update the key
 
     void updateKey(Node* nodeToUpdate, int newKey) {
         if (!nodeToUpdate) 
