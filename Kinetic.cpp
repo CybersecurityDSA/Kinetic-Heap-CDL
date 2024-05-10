@@ -42,7 +42,7 @@ public:
         heapifyUp(heap.size() - 1);
     }
 
-    // Update using key into the kinetic heap
+    // Update the key into 
 
     void updateKey(Node* nodeToUpdate, int newKey) {
         if (!nodeToUpdate) 
