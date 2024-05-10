@@ -1,6 +1,6 @@
 # Kinetic Heaps & Circular Linked List
 
-Welcome to the Kinetic Heaps & Circular Linked List project repository! This project aims to implement the Kinetic Heaps data structure as part of our team course project. Kinetic Heaps combine the concepts of heap data structures with kinetics, making them suitable for scenarios where elements' priorities change over time.
+Welcome to the Kinetic Heaps & Circular Linked List project repository! This project aims to implement the Kinetic Heaps and Circular Linked List data structure as part of our team course project. Kinetic Heaps combine the concepts of heap data structures with kinetics, making them suitable for scenarios where elements' priorities change over time.
 
 ## Introduction
 
